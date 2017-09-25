@@ -4,6 +4,7 @@
   "description": "Backend for city model distribution",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.15.5"
+    "compression": "^1.7.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.5",
+    "serve-static": "^1.12.6"
   }
 }
