@@ -1,0 +1,22 @@
+{
+  "name": "3d-backend",
+  "version": "1.0.0",
+  "description": "Backend for city model distribution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tosh823/3d-backend"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Ilya Minyaev",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.15.5"
+  }
+}
