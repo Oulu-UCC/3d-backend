@@ -1,4 +1,24 @@
 {
+  "asset": {
+    "version": "0.0"
+  },
+  "properties": {
+    "Longitude": {
+      "minimum": 0.44426761,
+      "maximum": 0.44427150
+    },
+    "Latitude": {
+      "minimum": 1.13404062,
+      "maximum": 1.13406732
+    },
+    "Height": {
+      "minimum": 0,
+      "maximum": 20
+    }
+  },
+  "geometricError": 43.88464075650763,
+  "refine": "ADD",
+  "root": {
     "boundingVolume": {
       "region": [
         1.13406732,
@@ -8,8 +28,35 @@
         0,
         20
       ]
-    },
-    "geometricError": 43.88464075650763,
-    "refine" : "ADD",
-    "children": []
-  }
+    }
+  },
+  "children": [
+    {
+      "boundingVolume": {
+        "region": [
+          -0.0004853062518095434,
+          0.898741188925484,
+          -0.0002736676267127107,
+          0.8989037314387226,
+          0,
+          158.4
+        ]
+      },
+      "content": {
+        "boundingVolume": {
+          "region": [
+            -0.0004058588642587614,
+            0.898746512179703,
+            -0.0002736676267127107,
+            0.8989037314387226,
+            0,
+            158.4
+          ]
+        },
+        "url": "1/0/0.b3dm"
+      },
+      "geometricError": 159.43385994848,
+      "children": []
+    }
+  ]
+}
