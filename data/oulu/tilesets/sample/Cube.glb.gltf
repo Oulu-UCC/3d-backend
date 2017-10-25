@@ -1,0 +1,153 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 36,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                1.00000047683716,
+                1.00000035762787,
+                1.0
+            ],
+            "min": [
+                -1.00000035762787,
+                -1.00000059604645,
+                -1.0
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 24,
+            "type": "VEC3"
+        }
+    ],
+    "asset": {
+        "generator": "FBX2glTF",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 72,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 288,
+            "byteOffset": 72,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 288,
+            "byteOffset": 360,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 648,
+            "uri": "buffer.bin"
+        }
+    ],
+    "materials": [
+        {
+            "alphaMode": "OPAQUE",
+            "name": "Default",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.64000004529953,
+                    0.00615114672109485,
+                    0.0104986829683185,
+                    1.0
+                ],
+                "metallicFactor": 0.100000001490116,
+                "roughnessFactor": 0.400000005960464
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Cube",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1
+                    },
+                    "indices": 0,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "children": [
+                1
+            ],
+            "name": "RootNode",
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "mesh": 0,
+            "name": "Cube",
+            "rotation": [
+                -0.707106828689575,
+                0.0,
+                0.0,
+                0.707106709480286
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                1.0,
+                1.8087829561136e-23
+            ]
+        }
+    ],
+    "samplers": [
+        {}
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "name": "Root Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ]
+}

@@ -3,12 +3,14 @@ require('dotenv').config();
 
 var path = require('path');
 var express = require('express');
+var cors = require('cors');
 var compression = require('compression');
 var serveStatic = require('serve-static');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8003;
 
 const app = express();
 app.use(compression());
+app.use(cors());
 
 // Define routes
 app.use(require('./routes'));
