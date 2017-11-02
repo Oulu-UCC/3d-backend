@@ -1,0 +1,62 @@
+{
+  "asset": {
+    "version": "0.0"
+  },
+  "properties": {
+    "Longitude": {
+      "minimum": 0.44426761,
+      "maximum": 0.44427150
+    },
+    "Latitude": {
+      "minimum": 1.13404062,
+      "maximum": 1.13406732
+    },
+    "Height": {
+      "minimum": 0,
+      "maximum": 20
+    }
+  },
+  "geometricError": 42,
+  "refine": "ADD",
+  "root": {
+    "boundingVolume": {
+      "region": [
+        1.13406732,
+        0.44427150,
+        1.13404062,
+        0.44426761,
+        0,
+        20
+      ]
+    }
+  },
+  "children": [
+    {
+      "boundingVolume": {
+        "region": [
+          1.13406732,
+          0.44427150,
+          1.13404062,
+          0.44426761,
+          0,
+          20
+        ]
+      },
+      "content": {
+        "boundingVolume": {
+          "region": [
+            1.13406732,
+            0.44427150,
+            1.13404062,
+            0.44426761,
+            0,
+            20
+          ]
+        },
+        "url": "sample/Cube.glb.gltf"
+      },
+      "geometricError": 42,
+      "children": []
+    }
+  ]
+}
