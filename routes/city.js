@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
 
 var router = express.Router();
 var jsonParser = bodyParser.json();
