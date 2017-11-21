@@ -32,7 +32,7 @@ MongoClient.connect(mongo_url)
                                 if (response.status == 200) {
                                     var point = {
                                         "type": "Point",
-                                        "coordinates": [ response.data.results[0].geometry.location.lng, response.data.results[0].geometry.location.lat ]
+                                        "coordinates": [response.data.results[0].geometry.location.lng, response.data.results[0].geometry.location.lat]
                                     };
                                     var promise = db.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "location": point } });
                                     pending.push(promise);
@@ -45,7 +45,7 @@ MongoClient.connect(mongo_url)
                     }
                 });
                 Promise.all(pending)
-                    .then(function() {
+                    .then(function () {
                         db.close();
                     });
             })
