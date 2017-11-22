@@ -3,8 +3,11 @@
  * in MongoDB, also creating tilesets for them
  */
 
+var fs = require('fs');
+var path = require('path');
 var axios = require('axios');
 var Mongo = require('mongodb');
+var TileGenerator = require('./tilegen');
 var MongoClient = Mongo.MongoClient;
 
 const MONGO_PORT = process.env.MONGO_PORT || 27017;
@@ -34,6 +37,8 @@ MongoClient.connect(mongo_url)
                                         "type": "Point",
                                         "coordinates": [response.data.results[0].geometry.location.lng, response.data.results[0].geometry.location.lat]
                                     };
+                                    var tileset = TileGenerator.MakeTileset("test", response.data.results[0].geometry.viewport.northeast, response.data.results[0].geometry.viewport.southwest);
+                                    fs.writeFile(path.dirname(__dirname) + "/data" + resource.dir + "/tileset.json", JSON.stringify(tileset, null, 4), null);
                                     var promise = db.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "location": point } });
                                     pending.push(promise);
                                 }

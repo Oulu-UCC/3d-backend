@@ -1,0 +1,283 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 11898,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 7605,
+            "max": [
+                14.2293395996094,
+                13.9471435546875,
+                10.3568630218506
+            ],
+            "min": [
+                -11.913818359375,
+                -12.0185623168945,
+                -7.53293704986572
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 7605,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 3,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 7605,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 4,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 1482,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 5,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 420,
+            "max": [
+                13.9849243164063,
+                13.7027282714844,
+                7.21706390380859
+            ],
+            "min": [
+                -11.6694030761719,
+                -11.7741546630859,
+                -7.53293704986572
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 6,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 420,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 7,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 420,
+            "type": "VEC2"
+        }
+    ],
+    "asset": {
+        "generator": "FBX2glTF",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 23796,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 91260,
+            "byteOffset": 23796,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 91260,
+            "byteOffset": 115056,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 60840,
+            "byteOffset": 206316,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2964,
+            "byteOffset": 267156,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 5040,
+            "byteOffset": 270120,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 5040,
+            "byteOffset": 275160,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3360,
+            "byteOffset": 280200,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 283560,
+            "uri": "buffer.bin"
+        }
+    ],
+    "images": [
+        {
+            "name": "Building1_2_D.png",
+            "uri": "Building1_2_D.png"
+        },
+        {
+            "name": "Concrete_D.png",
+            "uri": "Concrete_D.png"
+        }
+    ],
+    "materials": [
+        {
+            "alphaMode": "OPAQUE",
+            "name": "Building",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 0,
+                    "texCoord": 0
+                },
+                "metallicFactor": 0.100000001490116,
+                "roughnessFactor": 0.400000005960464
+            }
+        },
+        {
+            "alphaMode": "BLEND",
+            "name": "Concrete",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1.0
+                ],
+                "baseColorTexture": {
+                    "index": 1,
+                    "texCoord": 0
+                },
+                "metallicFactor": 0.100000001490116,
+                "roughnessFactor": 0.400000005960464
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Block6_Building1_2",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0,
+                    "material": 0,
+                    "mode": 4
+                },
+                {
+                    "attributes": {
+                        "NORMAL": 6,
+                        "POSITION": 5,
+                        "TEXCOORD_0": 7
+                    },
+                    "indices": 4,
+                    "material": 1,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "children": [
+                1
+            ],
+            "name": "RootNode",
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "mesh": 0,
+            "name": "Block6_Building1_2",
+            "rotation": [
+                -0.707106828689575,
+                0.0,
+                0.0,
+                0.707106709480286
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                0.0,
+                7.52630376815796,
+                1.44702636489088e-22
+            ]
+        }
+    ],
+    "samplers": [
+        {}
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "name": "Root Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "name": "BuildingTexture",
+            "sampler": 0,
+            "source": 0
+        },
+        {
+            "name": "ConcreteTexture",
+            "sampler": 0,
+            "source": 1
+        }
+    ]
+}

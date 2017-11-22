@@ -18,6 +18,7 @@ app.use(cors());
 app.use(require('./routes'));
 
 // Serve tilesets
+global.dataRoot = path.join(__dirname, 'data');
 app.use(serveStatic(path.join(__dirname, 'data'), {
     index: false
 }));

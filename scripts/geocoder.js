@@ -1,5 +1,6 @@
 var fs = require('fs');
 var DBS = require('../dbs');
+var TileGenerator = require('./tilegen');
 var Geocoder = {};
 
 const GOOGLE_API_KEY = "AIzaSyDOe9dKqs4SncEEOg5hAFDULxOlkGcsu6Y";
@@ -20,8 +21,8 @@ Geocoder.CheckResource = function (resource) {
                     "type": "Point",
                     "coordinates": [geometry.location.lng, geometry.location.lat]
                 };
-                var tileset = "";
-                fs.writeFile(resource.dir + "/tileset.json", tileset, function(error) {
+                var tileset = TileGenerator.MakeTileset("test", geometry.viewport.northeast, geometry.viewport.southwest);
+                fs.writeFile(global.dataRoot + resource.dir + "/tileset.json", JSON.stringify(tileset, null, 4), function(error) {
 
                 });
                 DBS.Instance.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "location": point } });
