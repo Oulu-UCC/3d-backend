@@ -1,0 +1,56 @@
+{
+    "asset": {
+        "version": "1.0"
+    },
+    "properties": {
+        "Longitude": {
+            "minimum": 0.444468247681207,
+            "maximum": 0.4445153359764694
+        },
+        "Latitude": {
+            "minimum": 1.1346713051502226,
+            "maximum": 1.134718393445485
+        },
+        "Height": {
+            "minimum": 1,
+            "maximum": 420
+        }
+    },
+    "geometricError": 500,
+    "root": {
+        "transform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+        ],
+        "boundingVolume": {
+            "region": [
+                0.444468247681207,
+                1.1346713051502226,
+                0.4445153359764694,
+                1.134718393445485,
+                0,
+                42
+            ]
+        },
+        "geometricError": 100,
+        "refine": "ADD",
+        "content": {
+            "url": "/oulu/block6/building_1/Building1_2.gltf"
+        },
+        "children": []
+    }
+}

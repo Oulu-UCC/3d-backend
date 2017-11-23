@@ -21,10 +21,17 @@ Geocoder.CheckResource = function (resource) {
                     "type": "Point",
                     "coordinates": [geometry.location.lng, geometry.location.lat]
                 };
-                var tileset = TileGenerator.MakeTileset("test", geometry.viewport.northeast, geometry.viewport.southwest);
-                fs.writeFile(global.dataRoot + resource.dir + "/tileset.json", JSON.stringify(tileset, null, 4), function(error) {
-
+                // Looking for gltf model
+                var gltf = resource.resources.find((element) => {
+                    if (element.format == "gltf") return true;
                 });
+                // If we have gltf model, create a tileset
+                if (gltf != null) {
+                    var url = resource.dir + "/" + gltf.filename;
+                    var tileset = TileGenerator.MakeTileset(url, geometry.viewport.northeast, geometry.viewport.southwest);
+                    fs.writeFile(path.dirname(__dirname) + "/data" + resource.dir + "/tileset.json", JSON.stringify(tileset, null, 4), null);
+                }
+                // Update resource with coordinates
                 DBS.Instance.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "location": point } });
             }
         })

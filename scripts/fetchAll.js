@@ -25,29 +25,36 @@ MongoClient.connect(mongo_url)
                 // Work with data
                 docs.forEach(function (doc, index) {
                     var resource = doc;
-                    if (resource.location == null) {
-                        // Location is unknown, try to fetch from Google API
-                        var address = resource.street + ' ' + resource.number + ', Oulu';
-                        address = address.replace(/\s/g, "+");
-                        var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + GOOGLE_API_KEY;
-                        var request = axios.get(url)
-                            .then(function (response) {
-                                if (response.status == 200) {
-                                    var point = {
-                                        "type": "Point",
-                                        "coordinates": [response.data.results[0].geometry.location.lng, response.data.results[0].geometry.location.lat]
-                                    };
-                                    var tileset = TileGenerator.MakeTileset("test", response.data.results[0].geometry.viewport.northeast, response.data.results[0].geometry.viewport.southwest);
+                    // Location is unknown, try to fetch from Google API
+                    var address = resource.street + ' ' + resource.number + ', Oulu';
+                    address = address.replace(/\s/g, "+");
+                    var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + GOOGLE_API_KEY;
+                    var request = axios.get(url)
+                        .then(function (response) {
+                            if (response.status == 200) {
+                                // Writing coordinates of object
+                                var point = {
+                                    "type": "Point",
+                                    "coordinates": [response.data.results[0].geometry.location.lng, response.data.results[0].geometry.location.lat]
+                                };
+                                var promise = db.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "location": point } });
+                                pending.push(promise);
+                                // Looking for gltf model
+                                var gltf = resource.resources.find((element) => {
+                                    if (element.format == "gltf") return true;
+                                });
+                                // If we have gltf model, create a tileset
+                                if (gltf != null) {
+                                    var url = resource.dir + "/" + gltf.filename;
+                                    var tileset = TileGenerator.MakeTileset(url, response.data.results[0].geometry.viewport.northeast, response.data.results[0].geometry.viewport.southwest);
                                     fs.writeFile(path.dirname(__dirname) + "/data" + resource.dir + "/tileset.json", JSON.stringify(tileset, null, 4), null);
-                                    var promise = db.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "location": point } });
-                                    pending.push(promise);
                                 }
-                            })
-                            .catch(function (error) {
-                                console.log("Error while fetching from Google API: " + error.message);
-                            });
-                        pending.push(request);
-                    }
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log("Error while fetching from Google API: " + error.message);
+                        });
+                    pending.push(request);
                 });
                 Promise.all(pending)
                     .then(function () {
