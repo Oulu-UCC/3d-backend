@@ -1,6 +1,11 @@
+var Mongo = require('mongodb');
+var axios = require('axios');
+var path = require('path');
 var fs = require('fs');
+
 var DBS = require('../dbs');
 var TileGenerator = require('./tilegen');
+
 var Geocoder = {};
 
 const GOOGLE_API_KEY = "AIzaSyDOe9dKqs4SncEEOg5hAFDULxOlkGcsu6Y";

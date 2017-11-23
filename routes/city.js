@@ -1,15 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var Mongo = require('mongodb');
 
 var DBS = require('../dbs');
-
-var MongoClient = require('mongodb').MongoClient;
+var Geocoder = require('../scripts/geocoder');
 
 var router = express.Router();
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
-const MONGO_PORT = process.env.MONGO_PORT || 27017;
-const mongo_url = 'mongodb://localhost:' + MONGO_PORT + '/city';
 
 /**
  * GET request by address
@@ -27,6 +25,28 @@ router.get('/address', function (req, res) {
     DBS.Instance.collection('oulu').find(filter).toArray()
         .then(function (docs) {
             res.status(200).send({ data: docs });
+        })
+        .catch(function (error) {
+            res.status(500).send("Internal server error");
+        });
+});
+
+/**
+ * POST request by id of object
+ * To do a check of object
+ */
+router.post('/:id', function (req, res) {
+    var id = req.params.id;
+
+    DBS.Instance.collection('oulu').findOne({ "_id": new Mongo.ObjectID(id) })
+        .then(function (doc) {
+            if (doc != null) {
+                Geocoder.CheckResource(doc);
+                res.status(200).send("Check completed!");
+            }
+            else {
+                res.status(404).send("Resource not found");
+            }
         })
         .catch(function (error) {
             res.status(500).send("Internal server error");
