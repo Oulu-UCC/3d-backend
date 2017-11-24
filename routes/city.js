@@ -4,6 +4,7 @@ var Mongo = require('mongodb');
 
 var DBS = require('../dbs');
 var Geocoder = require('../scripts/geocoder');
+var ImageEngine = require('../scripts/imagengine');
 
 var router = express.Router();
 var jsonParser = bodyParser.json();
@@ -74,6 +75,46 @@ router.get('/geo', function (req, res) {
     else {
         res.status(400).send("Bad request");
     }
+});
+
+/**
+ * POST request by id of object
+ * To do a conversion of object
+ */
+router.get('/convert', function (req, res) {
+    var id = req.query.id;
+    var format = req.query.out;
+
+    DBS.Instance.collection('oulu').findOne({ "_id": new Mongo.ObjectID(id) })
+        .then(function (doc) {
+            if (doc != null) {
+                // Looking for gltf model
+                doc.resources.forEach(function (element, index) {
+                    var target = element.textures.find((texture) => {
+                        if (texture.format == format) return true;
+                    });
+                    if (element.textures.length > 0 && target == null) {
+                        ImageEngine.ConvertImage(element.textures[0], format)
+                            .then(function (newTexture) {
+                                newTexture.uploaded = new Date(Date.now()).toISOString();
+                                var updateResource = "resources." + index + ".textures";
+                                DBS.Instance.collection('oulu').update({ "_id": new Mongo.ObjectID(id) }, { $push: { [updateResource]: newTexture } });
+                            })
+                            .catch(function (error) {
+                                console.log("Could not convert image: " + error);
+                                res.status(500).send("Internal server error");
+                            });
+                    }
+                });
+                res.status(200).send("Check completed!");
+            }
+            else {
+                res.status(404).send("Resource not found");
+            }
+        })
+        .catch(function (error) {
+            res.status(500).send("Internal server error");
+        });
 });
 
 module.exports = router;
