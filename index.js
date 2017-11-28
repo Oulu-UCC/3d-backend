@@ -11,8 +11,8 @@ var DBS = require('./dbs');
 const PORT = process.env.PORT || 8003;
 
 const app = express();
-app.use(compression());
-app.use(cors());
+//app.use(compression());
+//app.use(cors());
 
 // Define routes
 app.use(require('./routes'));
