@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Mongo = require('mongodb');
+var path = require('path');
 var winston = require('winston');
 
 var DBS = require('../dbs');
@@ -48,8 +49,10 @@ router.get('/:id', function (req, res) {
     DBS.Instance.collection('oulu').findOne({ "_id": new Mongo.ObjectID(id) })
         .then(function (doc) {
             if (doc != null) {
+                var tilesetPath = path.join('../data', doc.dir, '/tileset.json');
+                var tileset = require(tilesetPath);
                 res.status(200).send({
-                    data: doc
+                    tile: tileset
                 });
             }
             else {
