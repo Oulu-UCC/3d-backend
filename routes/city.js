@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Mongo = require('mongodb');
+var winston = require('winston');
 
 var DBS = require('../dbs');
 var Geocoder = require('../scripts/geocoder');
@@ -9,6 +10,7 @@ var ImageEngine = require('../scripts/imagengine');
 var router = express.Router();
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
+var logger = winston.loggers.get('city');
 
 /**
  * GET request by address
@@ -17,6 +19,8 @@ router.get('/address', function (req, res) {
     var street = req.query.street;
     var building = parseInt(req.query.number);
     var format = req.query.format;
+
+    logger.info('/address - GET', { street: street, number: building, format: format });
 
     var filter = {};
     if (street != null && street != '') filter["street"] = street;
@@ -61,6 +65,8 @@ router.get('/geo', function (req, res) {
     var lat = parseFloat(req.query.lat);
     var lng = parseFloat(req.query.lng);
     var radius = parseFloat(req.query.radius);
+
+    logger.info('/geo - GET', { lat: lat, lng: lng, radius: radius });
 
     if (lat != null && lng != null && radius != null) {
         var angularRadius = radius / 6371000; // Divided by Earth radius in meters, assuming that radius in meters
