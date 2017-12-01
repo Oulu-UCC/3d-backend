@@ -37,10 +37,35 @@ router.get('/address', function (req, res) {
 });
 
 /**
+ * GET request by id of object
+ * To do a check of object
+ */
+router.get('/:id', function (req, res) {
+    var id = req.params.id;
+
+    logger.info('/:id - GET', { id: id });
+
+    DBS.Instance.collection('oulu').findOne({ "_id": new Mongo.ObjectID(id) })
+        .then(function (doc) {
+            if (doc != null) {
+                res.status(200).send({
+                    data: doc
+                });
+            }
+            else {
+                res.status(404).send("Resource not found");
+            }
+        })
+        .catch(function (error) {
+            res.status(500).send("Internal server error");
+        });
+});
+
+/**
  * POST request by id of object
  * To do a check of object
  */
-router.post('/:id', function (req, res) {
+/*router.post('/:id', function (req, res) {
     var id = req.params.id;
 
     DBS.Instance.collection('oulu').findOne({ "_id": new Mongo.ObjectID(id) })
@@ -56,7 +81,7 @@ router.post('/:id', function (req, res) {
         .catch(function (error) {
             res.status(500).send("Internal server error");
         });
-});
+});*/
 
 /**
  * GET request by geo coordinates
@@ -87,7 +112,7 @@ router.get('/geo', function (req, res) {
  * POST request by id of object
  * To do a conversion of object
  */
-router.get('/convert', function (req, res) {
+/*router.get('/convert', function (req, res) {
     var id = req.query.id;
     var format = req.query.out;
 
@@ -121,6 +146,6 @@ router.get('/convert', function (req, res) {
         .catch(function (error) {
             res.status(500).send("Internal server error");
         });
-});
+});*/
 
 module.exports = router;
