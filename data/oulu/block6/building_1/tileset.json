@@ -19,17 +19,17 @@
     "geometricError": 500,
     "root": {
         "transform": [
-            1,
+            100,
             0,
             0,
             0,
             0,
-            1,
+            100,
             0,
             0,
             0,
             0,
-            1,
+            100,
             0,
             0,
             0,
@@ -49,7 +49,17 @@
         "geometricError": 100,
         "refine": "ADD",
         "content": {
-            "url": "/oulu/block6/building_1/Building1_2.gltf"
+            "url": "/oulu/block6/building_1/Building1_2.gltf",
+            "boundingVolume": {
+                "region": [
+                    0.444468247681207,
+                    1.1346713051502226,
+                    0.4445153359764694,
+                    1.134718393445485,
+                    0,
+                    42
+                ]
+            }
         },
         "children": []
     }

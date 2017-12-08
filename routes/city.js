@@ -52,6 +52,7 @@ router.get('/:id', function (req, res) {
                 var tilesetPath = path.join('../data', doc.dir, '/tileset.json');
                 var tileset = require(tilesetPath);
                 res.status(200).send({
+                    url: doc.dir,
                     tile: tileset
                 });
             }
