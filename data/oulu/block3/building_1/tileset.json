@@ -1,0 +1,24 @@
+{
+    "asset": {
+        "version": "1.0"
+    },
+    "geometricError": 500,
+    "root": {
+        "boundingVolume": {
+            "region": [
+                0.444155,
+                1.134041,
+                0.444312,
+                1.134198,
+                0,
+                42
+            ]
+        },
+        "geometricError": 42,
+        "refine": "REPLACE",
+        "content": {
+            "url": "BLOCK_3_building_1.b3dm"
+        },
+        "children": []
+    }
+}
