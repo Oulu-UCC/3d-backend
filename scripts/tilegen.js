@@ -59,4 +59,13 @@ TileGenerator.MakeTileset = function (contentUrl, northEast, southWest) {
     return tileset;
 };
 
+/**
+ * Update resource with GEO data.
+ * @param {object} building - Building object stored in database and for which we generate tile file.
+ * @returns {object} Tileset object.
+ */
+TileGenerator.MakeTile = function (building) {
+    
+};
+
 module.exports = TileGenerator;
