@@ -2,20 +2,52 @@
     "asset": {
         "version": "1.0"
     },
+    "properties": {
+        "Longitude": {
+            "minimum": 0.4444578250775221,
+            "maximum": 0.4444615409356565
+        },
+        "Latitude": {
+            "minimum": 1.1346939964238598,
+            "maximum": 1.1346955660361657
+        },
+        "Height": {
+            "minimum": 1,
+            "maximum": 420
+        }
+    },
     "geometricError": 500,
     "root": {
+        "transform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+        ],
         "boundingVolume": {
             "region": [
-                0.444155,
-                1.134041,
-                0.444312,
-                1.134198,
+                0.4444578250775221,
+                1.1346939964238598,
+                0.4444615409356565,
+                1.1346955660361657,
                 0,
                 42
             ]
         },
-        "geometricError": 42,
-        "refine": "REPLACE",
+        "geometricError": 100,
+        "refine": "ADD",
         "content": {
             "url": "BLOCK_3_building_1.b3dm"
         },
