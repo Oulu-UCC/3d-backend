@@ -27,8 +27,12 @@ Geocoder.CheckResource = function (resource) {
                     if (err != null) console.log("Error while writing tile .json: " + err);
                 });
                 // Update resource with coordinates
-                var address = response.data.results[0].formatted_address
-                DBS.Instance.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "street": address } });
+                var street, number;
+                response.data.results[0].address_components.forEach(element => {
+                    if (element.types.includes("street_number")) number = element.long_name;
+                    if (element.types.includes("route")) street = element.long_name;
+                });
+                DBS.Instance.collection('oulu').update({ "_id": new Mongo.ObjectID(resource._id) }, { $set: { "street": street, "number": number } });
             }
         })
         .catch(function (error) {
