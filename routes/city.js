@@ -63,6 +63,24 @@ router.get('/gen/:id', function (req, res) {
 
 /**
  * GET request by id of object
+ * To do a check of all objects
+ */
+router.get('/allgen', function (req, res) {
+    var id = req.params.id;
+
+    logger.info('/:allgen - GET');
+
+    DBS.Instance.collection('oulu').find({}).toArray(function (err, docs) {
+        if (err) throw err;
+        docs.forEach(element => {
+            Geocoder.CheckResource(element);
+        });
+        res.status(200).send("Done generation of 3d-tiles");
+    });
+});
+
+/**
+ * GET request by id of object
  */
 router.get('/:id', function (req, res) {
     var id = req.params.id;

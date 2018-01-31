@@ -66,7 +66,7 @@ TileGenerator.MakeTileset = function (contentUrl, northEast, southWest) {
  * @returns {object} Tileset object.
  */
 TileGenerator.MakeTile = function (building) {
-    var angularRadius = 5.0 / 6371000.0; 
+    var angularRadius = 20.0 / 6371000.0; 
     var longitude = building.location.coordinates[0] * Math.PI / 180.0;
     var latitude = building.location.coordinates[1] * Math.PI / 180.0;
     var latMin = latitude - angularRadius;
