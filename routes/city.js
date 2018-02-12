@@ -66,8 +66,6 @@ router.get('/gen/:id', function (req, res) {
  * To do a check of all objects
  */
 router.get('/allgen', function (req, res) {
-    var id = req.params.id;
-
     logger.info('/:allgen - GET');
 
     DBS.Instance.collection('oulu').find({}).toArray(function (err, docs) {
@@ -76,6 +74,24 @@ router.get('/allgen', function (req, res) {
             Geocoder.CheckResource(element);
         });
         res.status(200).send("Done generation of 3d-tiles");
+    });
+});
+
+router.get('/all', function (req, res) {
+    logger.info('/:all - GET');
+
+    DBS.Instance.collection('oulu').find({}).toArray(function (err, docs) {
+        if (err) throw err;
+        var result = [];
+        docs.forEach(element => {
+            var tilesetPath = path.join('../data', element.dir, '/tileset.json');
+            var tileset = require(tilesetPath);
+            result.push({
+                url: element.dir,
+                tile: tileset
+            });
+        });
+        res.status(200).send(result);
     });
 });
 
